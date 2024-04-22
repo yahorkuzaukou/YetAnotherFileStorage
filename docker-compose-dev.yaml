@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:15.1-alpine
+    volumes:
+      - ./backend/data/postgres:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./backend/.env
+
+  app:
+    build:
+      context: ./backend/
+      dockerfile: ./deploy/Dockerfile
+    volumes:
+      - ./backend/src:/secret_path/src
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - postgres
+

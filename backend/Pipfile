@@ -1,0 +1,13 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pip_conf_index_global"
+
+[packages]
+fastapi = "==0.110.2"
+uvicorn = "==0.29.0"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
